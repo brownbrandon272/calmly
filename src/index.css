@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2A9D8F;
+  --primary-light: #52B69A;
+  --primary-dark: #1A7D70;
+  --secondary: #8E9AAF;
+  --secondary-light: #B8C0D2;
+  --secondary-dark: #5E697C;
+  --accent: #CCD5AE;
+  --accent-light: #E9F0CB;
+  --accent-dark: #A3AB87;
+  --success: #76C893;
+  --warning: #F9C74F;
+  --error: #F94144;
+  --background: #F8F9FA;
+  --foreground: #212529;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-full font-medium transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  
+  .tab-active {
+    @apply text-primary border-b-2 border-primary;
+  }
+  
+  .tab-inactive {
+    @apply text-secondary hover:text-primary-dark;
+  }
+
+  .sound-card {
+    @apply bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border-2 border-transparent;
+  }
+  
+  .sound-card-active {
+    @apply border-2 border-primary bg-primary/5;
+  }
+
+  .habit-card {
+    @apply bg-white rounded-xl p-4 shadow-sm mb-3 border border-gray-100;
+  }
+
+  .day-marker {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-200;
+  }
+
+  .day-marker-completed {
+    @apply bg-primary text-white;
+  }
+
+  .day-marker-incomplete {
+    @apply bg-gray-100 text-gray-400 hover:bg-gray-200;
+  }
+}
+
+/* Animation for volume slider */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s infinite;
+}
+
+/* Smooth transitions */
+.tab-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.page-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Audio player styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--secondary-light);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-dark);
+}
